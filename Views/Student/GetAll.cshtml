@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Example.Models.Domain.Student>
+
+@{
+    var i = 1;
+    var successMessage = TempData["successMessage"]?.ToString();
+    var errorMessage = TempData["errorMessage"]?.ToString();
+}
+
+@if (!string.IsNullOrWhiteSpace(successMessage))
+{
+    <div class="alert alert-success">@successMessage</div>
+}
+else if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+<h1>DANH SÁCH SINH VIÊN K19</h1>
+
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>MSSV</th>
+            <th>Họ và tên</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Hình ảnh</th>
+            <th>Chi tiết</th>
+            <th>Chỉnh sửa</th>
+            <th>Xóa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.Mssv</td>
+                <td>@item.Name</td>
+                <td>@item.Birth.ToString("dd/MM/yyyy")</td>
+                <td>@(item.Gender ? "Nam" : "Nữ")</td>
+                <td>
+                    <img src="@item.ImgUrl" height="100" alt="Ảnh sinh viên" />
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="~/Student/GetStudentById/@item.Id">Chi tiết</a>
+                </td>
+                <td>
+                    <a class="btn btn-warning" href="~/Student/EditStudentById/@item.Id">Chỉnh sửa</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="~/Student/DelStudentById/@item.Id">Xóa</a>
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-success" href="~/Student/AddStudent">Thêm sinh viên</a>

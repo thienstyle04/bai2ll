@@ -1,0 +1,28 @@
+﻿@model Example.Models.Domain.Student
+<a class="btn btn-primary" asp-controller="Student" asp-action="GetAll"><i class="fa-solid af-arrow-left-long"></i>tro ve</a>
+<h1>thong tin mo ta sinh vien</h1>
+<div class="container">
+   <div class="row">
+       <div class="col-sm-3">
+           <img src="@Model.ImgUrl" class="img-thumbnail float-left"/>
+       </div>
+       <div class="col-sm-9">
+           <p><span class="d-inline-block w100 fw-bold">Ho ten:</span>@Model.Name</p>
+           <p><span class="d-inline-block w100 fw-bold">Ma so sv:</span>@Model.Mssv</p
+            <p><span class="d-inline-block w100 fw-bold">Ngay sinh:</span>@Model.Birth.ToString("dd//MM//yyyy")</p>
+            <p>
+                <span class="d-inline-block w100 fw-bold">Gioi tinh:</span>@if(Model.Genden==true)
+                {
+                    <span>Nam</span>
+                }
+                else
+                {
+                    <span>Nu</span>
+                }
+            </p>
+            <p><span class="d-inline-block w100 fw-bold">Mo ta:</span>@Model.Description</p>
+            <a class="btn btn-primary" href="/Student/EditStudentById/@Model.Id">Chinh sua</a>
+            <a class="btn btn-primary" href="/Student/DelStudentById/@Model.Id">Xoa</a>
+       </div>
+   </div>
+</div>
