@@ -8,7 +8,7 @@ namespace bai2ll.Controllers
     public class StudentController1 : Controller
     {
         private SchoolDbContext dbContext;
-        public StudentController(SchoolDbContext dbContext)
+        public StudentController1(SchoolDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

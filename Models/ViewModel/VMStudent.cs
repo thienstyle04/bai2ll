@@ -9,7 +9,7 @@ namespace bai2ll.Models.ViewModel
             [Required]
             public string? Name { get; set; }
             [Required]
-            public DateTime Birth { get; set; }
+            public DateOnly Birth { get; set; }
             [Required]
             public string? Gender { get; set; }
             [Required]
@@ -19,8 +19,6 @@ namespace bai2ll.Models.ViewModel
             public string Mssv { get; set; }
             [Required]
             public string? Description {  get; set; }
-
-        
-
+        public int Id { get; internal set; }
     }
 }
