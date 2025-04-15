@@ -1,0 +1,56 @@
+﻿@model Example.Models.ViewModel.VMStudent
+
+@{
+    var errorMessage = TempData["errorMessage"]?.ToString();
+}
+
+<h3>Chỉnh sửa thông tin sinh viên:</h3>
+
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+<form asp-controller="Student" asp-action="EditStudentById" method="post">
+    <div class="form-group">
+        <label class="form-label">Tên:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Ngày sinh:</label>
+        <input asp-for="Birth" class="form-control" />
+        <span asp-validation-for="Birth" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">MSSV:</label>
+        <input asp-for="Mssv" class="form-control" />
+        <span asp-validation-for="Mssv" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Giới tính:</label><br />
+        @Html.RadioButtonFor(m => m.Gender, "male", new { id = "male" }) <label for="male">Nam</label>
+        @Html.RadioButtonFor(m => m.Gender, "female", new { id = "female" }) <label for="female">Nữ</label>
+        <br />
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Mô tả:</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Ảnh:</label>
+        <input asp-for="ImgUrl" class="form-control" />
+        <span asp-validation-for="ImgUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Hoàn tất" class="btn btn-primary" />
+    </div>
+</form>
